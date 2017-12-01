@@ -219,34 +219,6 @@ string pMT::hash_1(string key)
  */
 
 {
-   unsigned int val = 0;
-
-    for(int i = 0; i < key.length(); i++){
-
-        val +=(unsigned int)(key[i]);
-
-    }
-
-        string p = to_string(val);
-
-    return p;
-}
-
-
-
-string pMT::hash_2(string key)
-
-/**
-
- * @brief A function that takes in a key and returns a hash of that key using some custom function
-
- * @param key, a string
-
- * @return a hash of the key
-
- */
-
-{
     unsigned int b = 378551;
 
 	unsigned int a = 63689;
@@ -268,6 +240,43 @@ string pMT::hash_2(string key)
 	string s = to_string(hash);
 
 	return s;
+
+}
+
+
+
+string pMT::hash_2(string key)
+
+/**
+
+ * @brief A function that takes in a key and returns a hash of that key using some custom function
+
+ * @param key, a string
+
+ * @return a hash of the key
+
+ */
+
+{
+    unsigned int hash = 5381;
+
+
+
+	for(size_t i = 0; i < key.length(); i++)
+
+	{
+
+	hash = ((hash << 5) + hash) + key[i];
+
+	}
+
+
+
+	string s = to_string(hash);
+
+    return s;
+
+
 }
 
 
@@ -286,24 +295,17 @@ string pMT::hash_3(string key)
 
 {
 
-	unsigned int hash = 5381;
+	 unsigned int val = 0;
 
+    for(int i = 0; i < key.length(); i++){
 
+        val +=(unsigned int)(key[i]);
 
-	for(size_t i = 0; i < key.length(); i++)
+    }
 
-	{
+        string p = to_string(val);
 
-	hash = ((hash << 5) + hash) + key[i];
-
-	}
-
-
-
-	string s = to_string(hash);
-
-    return s;
-
+    return p;
 }
 
 /*
